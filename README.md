@@ -19,3 +19,8 @@ const regionJson = {
 };
 RegionResponseBodySchema.parse(regionJson);
 ```
+
+## Publish
+```bash
+npm publish
+```

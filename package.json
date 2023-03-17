@@ -1,6 +1,6 @@
 {
   "name": "e-calculator-schemas",
-  "version": "1.0.2",
+  "version": "1.0.9",
   "description": "A package providing the schemas for the e-calculator application.",
   "main": "dist/e-calculator-schemas",
   "types": "dist/e-calculator-schemas",
@@ -12,7 +12,7 @@
     "lint": "eslint --ext .ts,.js .",
     "lint-fix": "eslint --ext .ts,.js . --fix",
     "update:to:latest": "ncu -u && npm update && npm install && npm audit fix",
-    "prepare": "rm -r dist || true && npm run build && npm run test && npm run lint"
+    "prepare": "rm -r dist || true && npm run build && npm run test:ci && npm run lint"
   },
   "publishConfig": {
     "access": "public"
@@ -36,14 +36,14 @@
     "url": "https://git.ecogood.org/services/e-calculator-schemas/issues"
   },
   "dependencies": {
-    "zod": "^3.21.4"
+    "zod": "^3.20.6"
   },
   "devDependencies": {
     "ts-jest": "^29.0.5",
     "@types/jest": "^28.1.6",
     "@typescript-eslint/eslint-plugin": "^5.33.0",
     "@typescript-eslint/parser": "^5.33.0",
-    "eslint": "^8.21.0",
+    "eslint": "8.22.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-config-standard": "^17.0.0",

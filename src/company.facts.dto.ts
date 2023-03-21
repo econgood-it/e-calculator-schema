@@ -1,11 +1,14 @@
 import { z } from 'zod';
 import { isCountryCode, isIndustryCode } from './shared.schemas';
 
-const isPositiveNumber = z
-  .number({
-    invalid_type_error: 'Number expected',
-    required_error: 'Number expected',
-  })
+const isNumberCustomError = z.number({
+  invalid_type_error: 'Number expected',
+  required_error: 'Number expected',
+});
+
+const isNumberWithDefaultZero = isNumberCustomError.default(0);
+
+const isPositiveNumber = isNumberCustomError
   .nonnegative('Number should be positive')
   .default(0);
 
@@ -39,8 +42,8 @@ const CompanyFactsRequestBodySchema = z.object({
   totalStaffCosts: isPositiveNumber,
   profit: isPositiveNumber,
   financialCosts: isPositiveNumber,
-  incomeFromFinancialInvestments: z.number().default(0),
-  additionsToFixedAssets: z.number().default(0),
+  incomeFromFinancialInvestments: isNumberWithDefaultZero,
+  additionsToFixedAssets: isNumberWithDefaultZero,
   turnover: isPositiveNumber,
   totalAssets: isPositiveNumber,
   financialAssetsAndCashBalance: isPositiveNumber,
@@ -68,8 +71,8 @@ export const CompanyFactsResponseBodySchema = z.object({
   totalStaffCosts: isPositiveNumber,
   profit: isPositiveNumber,
   financialCosts: isPositiveNumber,
-  incomeFromFinancialInvestments: z.number().default(0),
-  additionsToFixedAssets: z.number().default(0),
+  incomeFromFinancialInvestments: isNumberWithDefaultZero,
+  additionsToFixedAssets: isNumberWithDefaultZero,
   turnover: isPositiveNumber,
   totalAssets: isPositiveNumber,
   financialAssetsAndCashBalance: isPositiveNumber,

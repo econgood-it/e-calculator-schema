@@ -60,7 +60,6 @@ describe('RatingResponseBodySchema', () => {
       };
       const result = RatingResponseBodySchema.safeParse(json);
       expect(result.success).toBeFalsy();
-      console.log(!result.success && result.error.errors);
       expect(!result.success && result.error.errors[0]).toMatchObject(
         expectedError
       );

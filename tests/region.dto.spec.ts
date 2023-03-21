@@ -1,5 +1,4 @@
-import { RegionResponseBodySchema } from '../src/region.dto';
-import { RegionResponse } from '../dist/region.dto';
+import { RegionResponseBodySchema, RegionResponse } from '../src/region.dto';
 
 describe('Region DTO', () => {
   it('should be created from region entity', () => {

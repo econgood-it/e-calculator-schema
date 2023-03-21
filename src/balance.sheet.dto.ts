@@ -13,8 +13,8 @@ import {
 export const BalanceSheetCreateRequestBodySchema = z.object({
   type: z.nativeEnum(BalanceSheetType),
   version: z.nativeEnum(BalanceSheetVersion),
-  companyFacts: CompanyFactsCreateRequestBodySchema.default({}),
-  ratings: RatingRequestBodySchema.array().default([]),
+  companyFacts: CompanyFactsCreateRequestBodySchema.optional().default({}),
+  ratings: RatingRequestBodySchema.optional().array().default([]),
 });
 
 export const BalanceSheetPatchRequestBodySchema = z.object({

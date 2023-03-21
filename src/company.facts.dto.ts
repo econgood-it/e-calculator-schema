@@ -46,7 +46,7 @@ const CompanyFactsRequestBodySchema = z.object({
   financialAssetsAndCashBalance: isPositiveNumber,
   numberOfEmployees: isPositiveNumber,
   hasCanteen: z.oboolean(),
-  averageJourneyToWorkForStaffInKm: isPositiveNumber,
+  averageJourneyToWorkForStaffInKm: z.number().min(0).max(30),
   isB2B: z.boolean().default(false),
   supplyFractions: SupplyFractionRequestBodySchema.array().default([]),
   employeesFractions: EmployeesFractionRequestBodySchema.array().default([]),

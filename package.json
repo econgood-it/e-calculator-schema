@@ -11,8 +11,8 @@
     "format": "prettier --write .",
     "lint": "eslint --ext .ts,.js .",
     "lint-fix": "eslint --ext .ts,.js . --fix",
-    "update:to:latest": "ncu -u && npm update && npm install && npm audit fix",
-    "prepare": "rm -r dist || true && yarn run build && yarn run test:ci && yarn run lint"
+    "update:to:latest": "ncu -u && yarn update && yarn install && yarn audit fix",
+    "prepare": "rm -r dist || true && yarn run build && yarn run test:ci"
   },
   "publishConfig": {
     "access": "public"

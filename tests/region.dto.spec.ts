@@ -1,8 +1,8 @@
-import { RegionResponseBodySchema, RegionResponse } from '../src/region.dto';
+import { RegionResponseBodySchema } from '../src/region.dto';
 
 describe('Region DTO', () => {
   it('should be created from region entity', () => {
-    const regionJson: RegionResponse = {
+    const regionJson = {
       countryCode: 'DEU',
       countryName: 'Germany',
     };

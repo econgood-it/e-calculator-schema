@@ -12,8 +12,6 @@ export const RatingRequestBodySchema = z.object({
   estimations: z.number().min(-200).max(10).optional(),
 });
 
-export type RatingRequestBody = z.infer<typeof RatingRequestBodySchema>;
-
 export enum RatingType {
   topic = 'topic',
   aspect = 'aspect',
@@ -49,5 +47,3 @@ export const RatingResponseBodySchema = z
       path: ['estimations'],
     })
   );
-
-export type RatingResponseBody = z.infer<typeof RatingResponseBodySchema>;

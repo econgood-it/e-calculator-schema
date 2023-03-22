@@ -13,18 +13,14 @@ import {
 export const BalanceSheetCreateRequestBodySchema = z.object({
   type: z.nativeEnum(BalanceSheetType),
   version: z.nativeEnum(BalanceSheetVersion),
-  companyFacts: CompanyFactsCreateRequestBodySchema.optional().default({}),
-  ratings: RatingRequestBodySchema.optional().array().default([]),
+  companyFacts: CompanyFactsCreateRequestBodySchema.default({}),
+  ratings: RatingRequestBodySchema.array().default([]),
 });
 
 export const BalanceSheetPatchRequestBodySchema = z.object({
   companyFacts: CompanyFactsPatchRequestBodySchema.optional(),
   ratings: RatingRequestBodySchema.array().default([]),
 });
-
-export type BalanceSheetPatchRequestBody = z.infer<
-  typeof BalanceSheetPatchRequestBodySchema
->;
 
 export const BalanceSheetResponseBodySchema = z.object({
   id: z.number().optional(),
@@ -33,10 +29,6 @@ export const BalanceSheetResponseBodySchema = z.object({
   ratings: RatingResponseBodySchema.array(),
   companyFacts: CompanyFactsResponseBodySchema,
 });
-
-export type BalanceSheetResponseBody = z.infer<
-  typeof BalanceSheetResponseBodySchema
->;
 
 export const BalanceSheetIdsResponseSchema = z
   .object({

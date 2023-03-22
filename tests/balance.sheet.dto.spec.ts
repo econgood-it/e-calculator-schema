@@ -1,4 +1,3 @@
-import { CompanyFactsPatchRequestBodySchema } from '../src/company.facts.dto';
 import { BalanceSheetCreateRequestBodySchema } from '../src/balance.sheet.dto';
 import { BalanceSheetType, BalanceSheetVersion } from '../src/shared.schemas';
 

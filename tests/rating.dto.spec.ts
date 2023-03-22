@@ -46,7 +46,7 @@ describe('RatingResponseBodySchema', () => {
       const json = {
         shortName: 'A1',
         name: 'Human dignity in the supply chain',
-        estimations: estimations,
+        estimations,
         isPositive: true,
         type: RatingType.aspect,
         weight: 0,
@@ -72,7 +72,7 @@ describe('RatingResponseBodySchema', () => {
       const json = {
         shortName: 'A1',
         name: 'Human dignity in the supply chain',
-        estimations: estimations,
+        estimations,
         isPositive: false,
         type: RatingType.aspect,
         weight: 0,
@@ -98,7 +98,7 @@ describe('RatingResponseBodySchema', () => {
       const json = {
         shortName: 'A1',
         name: 'Human dignity in the supply chain',
-        estimations: estimations,
+        estimations,
         isPositive: false,
         type: RatingType.topic,
         weight: 0,

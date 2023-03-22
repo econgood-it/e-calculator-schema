@@ -63,10 +63,6 @@ export const CompanyFactsCreateRequestBodySchema =
 export const CompanyFactsPatchRequestBodySchema =
   CompanyFactsRequestBodySchema.partial();
 
-export type CompanyFactsPatchRequestBody = z.infer<
-  typeof CompanyFactsPatchRequestBodySchema
->;
-
 export const CompanyFactsResponseBodySchema = z.object({
   totalPurchaseFromSuppliers: isPositiveNumber,
   totalStaffCosts: isPositiveNumber,
@@ -89,7 +85,3 @@ export const CompanyFactsResponseBodySchema = z.object({
     costs: z.number(),
   }),
 });
-
-export type CompanyFactsResponseBody = z.infer<
-  typeof CompanyFactsResponseBodySchema
->;

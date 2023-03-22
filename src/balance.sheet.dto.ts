@@ -30,8 +30,11 @@ export const BalanceSheetResponseBodySchema = z.object({
   companyFacts: CompanyFactsResponseBodySchema,
 });
 
-export const BalanceSheetIdsResponseSchema = z
+export const BalanceSheetItemResponseSchema = z
   .object({
     id: z.number(),
   })
   .array();
+
+export const BalanceSheetItemsResponseSchema =
+  BalanceSheetItemResponseSchema.array();

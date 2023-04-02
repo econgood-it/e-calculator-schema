@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-export const CompanyProfileRequestSchema = z.object({
+export const OrganizationRequestSchema = z.object({
   address: z.object({
     city: z.string(),
     houseNumber: z.string(),

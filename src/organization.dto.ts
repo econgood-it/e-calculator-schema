@@ -8,3 +8,7 @@ export const OrganizationRequestSchema = z.object({
     zip: z.string(),
   }),
 });
+
+export const OrganizationResponseSchema = OrganizationRequestSchema.extend({
+  id: z.number(),
+});

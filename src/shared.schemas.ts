@@ -19,3 +19,19 @@ export enum BalanceSheetVersion {
   // eslint-disable-next-line camelcase
   v5_0_8 = '5.08',
 }
+
+const isNumberCustomError = z.number({
+  invalid_type_error: 'Number expected',
+  required_error: 'Number expected',
+});
+export const isNumberWithDefaultZero = isNumberCustomError.default(0);
+export const isPositiveNumber = isNumberCustomError
+  .nonnegative('Number should be positive')
+  .default(0);
+export const isPercentage = z
+  .number({
+    invalid_type_error: 'Percentage expected',
+    required_error: 'Percentage expected',
+  })
+  .min(0, 'Percentage should be between 0 and 100')
+  .max(100, 'Percentage should be between 0 and 100');

@@ -1,24 +1,11 @@
 import { z } from 'zod';
-import { isCountryCode, isIndustryCode } from './shared.schemas';
-
-const isNumberCustomError = z.number({
-  invalid_type_error: 'Number expected',
-  required_error: 'Number expected',
-});
-
-const isNumberWithDefaultZero = isNumberCustomError.default(0);
-
-const isPositiveNumber = isNumberCustomError
-  .nonnegative('Number should be positive')
-  .default(0);
-
-const isPercentage = z
-  .number({
-    invalid_type_error: 'Percentage expected',
-    required_error: 'Percentage expected',
-  })
-  .min(0, 'Percentage should be between 0 and 100')
-  .max(100, 'Percentage should be between 0 and 100');
+import {
+  isCountryCode,
+  isIndustryCode,
+  isNumberWithDefaultZero,
+  isPercentage,
+  isPositiveNumber,
+} from './shared.schemas';
 
 const SupplyFractionRequestBodySchema = z.object({
   countryCode: isCountryCode.optional(),

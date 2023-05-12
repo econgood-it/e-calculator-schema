@@ -61,14 +61,14 @@ export const CompanyFactsResponseBodySchema = z.object({
   totalAssets: isPositiveNumber,
   financialAssetsAndCashBalance: isPositiveNumber,
   numberOfEmployees: isPositiveNumber,
-  hasCanteen: z.boolean(),
+  hasCanteen: z.oboolean(),
   averageJourneyToWorkForStaffInKm: isPositiveNumber,
   isB2B: z.boolean(),
   supplyFractions: SupplyFractionRequestBodySchema.array(),
   employeesFractions: EmployeesFractionRequestBodySchema.array(),
   industrySectors: IndustrySectorRequestBodySchema.array(),
   mainOriginOfOtherSuppliers: z.object({
-    countryCode: isCountryCode,
+    countryCode: isCountryCode.optional(),
     costs: z.number(),
   }),
 });

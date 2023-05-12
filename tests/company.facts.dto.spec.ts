@@ -123,13 +123,17 @@ describe('CompanyFactsResponseBodySchema', () => {
     expect(companyFactsResponse).toMatchObject(jsonConst);
   });
 
-  it('parse from json fails on missing hasCanteen', () => {
+  it('parse from json with missing hasCanteen', () => {
     const json: any = jsonConst;
     delete json.hasCanteen;
-    const result = CompanyFactsResponseBodySchema.safeParse(json);
-    expect(result.success).toBeFalsy();
-    expect(!result.success && result.error.flatten().fieldErrors).toEqual({
-      hasCanteen: ['Required'],
-    });
+    const result = CompanyFactsResponseBodySchema.parse(json);
+    expect(result).toEqual(json);
+  });
+
+  it('parse from json with missing countryCode for main origin of other suppliers', () => {
+    const json: any = jsonConst;
+    delete json.mainOriginOfOtherSuppliers.countryCode;
+    const result = CompanyFactsResponseBodySchema.parse(json);
+    expect(result).toEqual(json);
   });
 });

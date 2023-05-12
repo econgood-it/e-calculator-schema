@@ -68,7 +68,7 @@ export const CompanyFactsResponseBodySchema = z.object({
   employeesFractions: EmployeesFractionRequestBodySchema.array(),
   industrySectors: IndustrySectorRequestBodySchema.array(),
   mainOriginOfOtherSuppliers: z.object({
-    countryCode: isCountryCode.optional(),
+    countryCode: isCountryCode,
     costs: z.number(),
   }),
 });

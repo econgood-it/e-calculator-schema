@@ -1,4 +1,7 @@
-import { CompanyFactsPatchRequestBodySchema } from '../src/company.facts.dto';
+import {
+  CompanyFactsPatchRequestBodySchema,
+  CompanyFactsResponseBodySchema,
+} from '../src/company.facts.dto';
 
 describe('CompanyFactsPatchRequestBodySchema', () => {
   const jsonConst = {
@@ -86,6 +89,47 @@ describe('CompanyFactsPatchRequestBodySchema', () => {
       const companyFactsPatchRequestBody =
         CompanyFactsPatchRequestBodySchema.parse(json);
       expect(companyFactsPatchRequestBody.isB2B).toBeUndefined();
+    });
+  });
+});
+
+describe('CompanyFactsResponseBodySchema', () => {
+  const jsonConst = {
+    totalPurchaseFromSuppliers: 1,
+    totalStaffCosts: 2,
+    profit: 3,
+    financialCosts: 4,
+    incomeFromFinancialInvestments: 5,
+    additionsToFixedAssets: 6,
+    turnover: 7,
+    totalAssets: 8,
+    financialAssetsAndCashBalance: 9,
+    numberOfEmployees: 11,
+    hasCanteen: true,
+    averageJourneyToWorkForStaffInKm: 12,
+    isB2B: true,
+    supplyFractions: [],
+    employeesFractions: [],
+    industrySectors: [],
+    mainOriginOfOtherSuppliers: {
+      countryCode: 'DEU',
+      costs: 23,
+    },
+  };
+
+  it('parse from json', () => {
+    const companyFactsResponse =
+      CompanyFactsResponseBodySchema.parse(jsonConst);
+    expect(companyFactsResponse).toMatchObject(jsonConst);
+  });
+
+  it('parse from json fails on missing hasCanteen', () => {
+    const json: any = jsonConst;
+    delete json.hasCanteen;
+    const result = CompanyFactsResponseBodySchema.safeParse(json);
+    expect(result.success).toBeFalsy();
+    expect(!result.success && result.error.flatten().fieldErrors).toEqual({
+      hasCanteen: ['Required'],
     });
   });
 });

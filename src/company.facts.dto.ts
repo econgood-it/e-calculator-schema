@@ -61,7 +61,7 @@ export const CompanyFactsResponseBodySchema = z.object({
   totalAssets: isPositiveNumber,
   financialAssetsAndCashBalance: isPositiveNumber,
   numberOfEmployees: isPositiveNumber,
-  hasCanteen: z.oboolean(),
+  hasCanteen: z.boolean(),
   averageJourneyToWorkForStaffInKm: isPositiveNumber,
   isB2B: z.boolean(),
   supplyFractions: SupplyFractionRequestBodySchema.array(),

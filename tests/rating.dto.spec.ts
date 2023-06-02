@@ -49,17 +49,18 @@ describe('RatingResponseBodySchema', () => {
         estimations,
         isPositive: true,
         type: RatingType.aspect,
-        weight: 0,
+        weight: 1,
         points: 0,
         maxPoints: 0,
       };
       const expectedError = {
         code: 'custom',
         message: 'Number should be between 0 and 10',
-        path: ['estimations'],
+        path: ['estimations', 'A1'],
       };
       const result = RatingResponseBodySchema.safeParse(json);
       expect(result.success).toBeFalsy();
+      console.log(!result.success && result.error.errors);
       expect(!result.success && result.error.errors[0]).toMatchObject(
         expectedError
       );
@@ -82,7 +83,7 @@ describe('RatingResponseBodySchema', () => {
       const expectedError = {
         code: 'custom',
         message: 'Number should be between -200 and 0',
-        path: ['estimations'],
+        path: ['estimations', 'A1'],
       };
       const result = RatingResponseBodySchema.safeParse(json);
       expect(result.success).toBeFalsy();

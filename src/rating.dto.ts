@@ -44,6 +44,6 @@ export const RatingResponseBodySchema = z
       message: `Number should be between ${
         data.isPositive ? '0 and 10' : '-200 and 0'
       }`,
-      path: ['estimations'],
+      path: [`estimations`, data.shortName],
     })
   );

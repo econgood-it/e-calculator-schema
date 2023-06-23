@@ -27,7 +27,7 @@ const IndustrySectorRequestBodySchema = z.object({
 const CompanyFactsRequestBodySchema = z.object({
   totalPurchaseFromSuppliers: isPositiveNumber,
   totalStaffCosts: isPositiveNumber,
-  profit: isPositiveNumber,
+  profit: isNumberWithDefaultZero,
   financialCosts: isPositiveNumber,
   incomeFromFinancialInvestments: isNumberWithDefaultZero,
   additionsToFixedAssets: isNumberWithDefaultZero,
@@ -53,7 +53,7 @@ export const CompanyFactsPatchRequestBodySchema =
 export const CompanyFactsResponseBodySchema = z.object({
   totalPurchaseFromSuppliers: isPositiveNumber,
   totalStaffCosts: isPositiveNumber,
-  profit: isPositiveNumber,
+  profit: isNumberWithDefaultZero,
   financialCosts: isPositiveNumber,
   incomeFromFinancialInvestments: isNumberWithDefaultZero,
   additionsToFixedAssets: isNumberWithDefaultZero,

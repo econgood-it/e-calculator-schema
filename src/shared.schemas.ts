@@ -18,6 +18,15 @@ const isNumberCustomError = z.number({
   invalid_type_error: 'Number expected',
   required_error: 'Number expected',
 });
+
+const WEIGHT_VALUES = [0, 0.5, 1, 1.5, 2];
+export const isWeight = z
+  .number()
+  .refine((v) => WEIGHT_VALUES.some((w) => w === v), {
+    message: `Weight has to be one of the following values ${WEIGHT_VALUES}`,
+  })
+  .optional();
+
 export const isNumberWithDefaultZero = isNumberCustomError.default(0);
 export const isPositiveNumber = isNumberCustomError
   .nonnegative('Number should be positive')

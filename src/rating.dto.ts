@@ -1,14 +1,9 @@
 import { z } from 'zod';
-export const WEIGHT_VALUES = [0, 0.5, 1, 1.5, 2];
+import { isWeight } from './shared.schemas';
 
 export const RatingRequestBodySchema = z.object({
   shortName: z.string(),
-  weight: z
-    .number()
-    .refine((v) => WEIGHT_VALUES.some((w) => w === v), {
-      message: `Weight has to be one of the following values ${WEIGHT_VALUES}`,
-    })
-    .optional(),
+  weight: isWeight,
   estimations: z.number().min(-200).max(10).optional(),
 });
 

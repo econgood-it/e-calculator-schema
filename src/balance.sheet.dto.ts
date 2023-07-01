@@ -22,7 +22,7 @@ export const BalanceSheetCreateRequestBodySchema = z.object({
 export const BalanceSheetPatchRequestBodySchema = z.object({
   companyFacts: CompanyFactsPatchRequestBodySchema.optional(),
   ratings: RatingRequestBodySchema.array().default([]),
-  stakeholderWeights: StakeholderWeightSchema.array().default([]),
+  stakeholderWeights: StakeholderWeightSchema.array().optional(),
 });
 
 export const BalanceSheetResponseBodySchema = z.object({

@@ -45,11 +45,11 @@ describe('BalanceSheetCreateRequestBodySchema', () => {
 });
 
 describe('BalanceSheetPatchRequestBodySchema', () => {
-  it('parse from json without defined stakeholder weights', () => {
+  it('parse from empty json', () => {
     const companyFactsPatchRequestBody =
       BalanceSheetPatchRequestBodySchema.parse({});
     expect(companyFactsPatchRequestBody).toMatchObject({
-      stakeholderWeights: [],
+      ratings: [],
     });
   });
 

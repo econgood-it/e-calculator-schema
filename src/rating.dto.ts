@@ -1,9 +1,9 @@
 import { z } from 'zod';
-import { isWeight } from './shared.schemas';
+import { isWeightOptional } from './shared.schemas';
 
 export const RatingRequestBodySchema = z.object({
   shortName: z.string(),
-  weight: isWeight,
+  weight: isWeightOptional,
   estimations: z.number().min(-200).max(10).optional(),
 });
 

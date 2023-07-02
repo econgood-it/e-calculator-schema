@@ -15,4 +15,13 @@ describe('StakeholderWeightRequestSchema', () => {
       'Weight has to be one of the following values 0,0.5,1,1.5,2'
     );
   });
+
+  it('should fail on wrong shortName', () => {
+    const jsObject = { shortName: 'F', weight: 2 };
+    const result = StakeholderWeightSchema.safeParse(jsObject);
+    expect(result.success).toBeFalsy();
+    expect(!result.success && result.error.errors[0].message).toBe(
+      'Short name has to be one of the following values A,B,C,D,E'
+    );
+  });
 });

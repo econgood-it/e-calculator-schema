@@ -12,3 +12,7 @@ export const OrganizationRequestSchema = z.object({
 export const OrganizationResponseSchema = OrganizationRequestSchema.extend({
   id: z.number(),
 });
+
+export const OrganizationItemsResponseSchema = z
+  .object({ id: z.number() })
+  .array();

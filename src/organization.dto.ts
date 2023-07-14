@@ -1,11 +1,14 @@
 import { z } from 'zod';
-
+const errorMsg = 'Must not be blank';
+const isNonEmptyString = z
+  .string({ required_error: errorMsg })
+  .min(1, { message: errorMsg });
 export const OrganizationRequestSchema = z.object({
   address: z.object({
-    city: z.string(),
-    houseNumber: z.string(),
-    street: z.string(),
-    zip: z.string(),
+    city: isNonEmptyString,
+    houseNumber: isNonEmptyString,
+    street: isNonEmptyString,
+    zip: isNonEmptyString,
   }),
 });
 

@@ -18,6 +18,19 @@ describe('OrganizationRequestSchema', () => {
     const organization = OrganizationRequestSchema.parse(jsonConst);
     expect(organization).toMatchObject(jsonConst);
   });
+
+  it.each(['city', 'street', 'zip', 'houseNumber'])(
+    `parsing fails on empty %s`,
+    (fieldName) => {
+      const result = OrganizationRequestSchema.safeParse({
+        address: { ...jsonConst.address, [fieldName]: '' },
+      });
+      expect(result.success).toBeFalsy();
+      expect(!result.success && result.error.errors[0].message).toBe(
+        'Must not be blank'
+      );
+    }
+  );
 });
 
 describe('OrganizationResponseSchema', () => {

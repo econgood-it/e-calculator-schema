@@ -2,8 +2,8 @@ import { z } from 'zod';
 const errorMsg = 'Must not be blank';
 const isNonEmptyString = z
   .string({ required_error: errorMsg })
-  .min(1, { message: errorMsg })
-  .refine(() => false, { params: { i18n: 'blank_error_msg' } });
+  .min(1, { message: errorMsg });
+
 export const OrganizationRequestSchema = z.object({
   address: z.object({
     city: isNonEmptyString,

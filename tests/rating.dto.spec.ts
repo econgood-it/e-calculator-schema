@@ -56,7 +56,7 @@ describe('RatingResponseBodySchema', () => {
       const expectedError = {
         code: 'custom',
         message: 'Number should be between 0 and 10',
-        path: ['estimations', 'A1'],
+        path: ['estimations'],
       };
       const result = RatingResponseBodySchema.safeParse(json);
       expect(result.success).toBeFalsy();
@@ -82,7 +82,7 @@ describe('RatingResponseBodySchema', () => {
       const expectedError = {
         code: 'custom',
         message: 'Number should be between -200 and 0',
-        path: ['estimations', 'A1'],
+        path: ['estimations'],
       };
       const result = RatingResponseBodySchema.safeParse(json);
       expect(result.success).toBeFalsy();

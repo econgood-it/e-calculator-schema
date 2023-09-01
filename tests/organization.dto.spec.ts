@@ -6,6 +6,7 @@ import {
 
 describe('OrganizationRequestSchema', () => {
   const jsonConst = {
+    name: 'My organization',
     address: {
       street: 'Example street',
       houseNumber: '28a',
@@ -36,6 +37,7 @@ describe('OrganizationRequestSchema', () => {
 describe('OrganizationResponseSchema', () => {
   const jsonConst = {
     id: 9,
+    name: 'My organization',
     address: {
       street: 'Example street',
       houseNumber: '28a',
@@ -52,7 +54,10 @@ describe('OrganizationResponseSchema', () => {
 
 describe('OrganizationItemsResponseSchema', () => {
   it('parse from json', () => {
-    const json = [{ id: 3 }, { id: 4 }];
+    const json = [
+      { id: 3, name: 'My first organization' },
+      { id: 4, name: 'My second organization' },
+    ];
     const organization = OrganizationItemsResponseSchema.parse(json);
     expect(organization).toMatchObject(json);
   });

@@ -5,6 +5,7 @@ const isNonEmptyString = z
   .min(1, { message: errorMsg });
 
 export const OrganizationRequestSchema = z.object({
+  name: isNonEmptyString,
   address: z.object({
     city: isNonEmptyString,
     houseNumber: isNonEmptyString,
@@ -18,5 +19,5 @@ export const OrganizationResponseSchema = OrganizationRequestSchema.extend({
 });
 
 export const OrganizationItemsResponseSchema = z
-  .object({ id: z.number() })
+  .object({ id: z.number(), name: isNonEmptyString })
   .array();

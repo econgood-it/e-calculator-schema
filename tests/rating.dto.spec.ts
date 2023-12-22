@@ -40,6 +40,22 @@ describe('RatingRequestBodySchema', () => {
 });
 
 describe('RatingResponseBodySchema', () => {
+  it('should parser rating successfully', () => {
+    const json = {
+      shortName: 'A1',
+      name: 'Human dignity in the supply chain',
+      estimations: 5,
+      isPositive: true,
+      type: RatingType.aspect,
+      weight: 1,
+      isWeightSelectedByUser: true,
+      points: 0,
+      maxPoints: 0,
+    };
+    const rating = RatingResponseBodySchema.parse(json);
+    expect(rating).toStrictEqual(json);
+  });
+
   it.each([{ estimations: 11 }, { estimations: -2 }])(
     'should fail for invalid estimations if aspect is positive ',
     ({ estimations }) => {
@@ -50,6 +66,7 @@ describe('RatingResponseBodySchema', () => {
         isPositive: true,
         type: RatingType.aspect,
         weight: 1,
+        isWeightSelectedByUser: true,
         points: 0,
         maxPoints: 0,
       };
@@ -76,6 +93,7 @@ describe('RatingResponseBodySchema', () => {
         isPositive: false,
         type: RatingType.aspect,
         weight: 0,
+        isWeightSelectedByUser: true,
         points: 0,
         maxPoints: 0,
       };
@@ -102,6 +120,7 @@ describe('RatingResponseBodySchema', () => {
         isPositive: false,
         type: RatingType.topic,
         weight: 0,
+        isWeightSelectedByUser: true,
         points: 0,
         maxPoints: 0,
       };

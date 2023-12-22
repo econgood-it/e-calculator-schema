@@ -22,6 +22,7 @@ export const RatingResponseBodySchema = z
       required_error: 'Number expected',
     }),
     weight: z.number(),
+    isWeightSelectedByUser: z.boolean(),
     points: z.number(),
     maxPoints: z.number(),
   })

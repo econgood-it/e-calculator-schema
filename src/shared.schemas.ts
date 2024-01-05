@@ -19,7 +19,7 @@ const isNumberCustomError = z.number({
   required_error: 'Number expected',
 });
 
-const WEIGHT_VALUES = [0, 0.5, 1, 1.5, 2];
+export const WEIGHT_VALUES = [0, 0.5, 1, 1.5, 2];
 
 export const isWeight = z
   .number()

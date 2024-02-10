@@ -16,6 +16,7 @@ export const OrganizationRequestSchema = z.object({
 
 export const OrganizationResponseSchema = OrganizationRequestSchema.extend({
   id: z.number(),
+  invitations: z.string().email().array(),
 });
 
 export const OrganizationItemsResponseSchema = z

@@ -44,11 +44,12 @@ describe('OrganizationResponseSchema', () => {
       zip: '999999',
       city: 'Example city',
     },
+    invitations: ['user1@example.com', 'user2@example.com'],
   };
 
   it('parse from json', () => {
     const organization = OrganizationResponseSchema.parse(jsonConst);
-    expect(organization).toMatchObject(jsonConst);
+    expect(organization).toEqual(jsonConst);
   });
 });
 

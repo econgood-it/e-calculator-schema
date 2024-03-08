@@ -8,3 +8,8 @@ export const UserRequestBodySchema = z.object({
 export const PasswordResetRequestBodySchema = z.object({
   newPassword: isPassword,
 });
+
+export const UserInvitationResponseSchema = z.object({
+  id: z.number(),
+  name: z.string(),
+});

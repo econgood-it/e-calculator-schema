@@ -12,6 +12,8 @@ export enum BalanceSheetVersion {
   v5_0_6 = '5.06',
   // eslint-disable-next-line camelcase
   v5_0_8 = '5.08',
+  // eslint-disable-next-line camelcase
+  v5_0_9 = '5.09',
 }
 
 const isNumberCustomError = z.number({

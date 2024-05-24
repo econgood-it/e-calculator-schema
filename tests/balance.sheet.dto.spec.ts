@@ -31,6 +31,15 @@ describe('BalanceSheetCreateRequestBodySchema', () => {
     });
   });
 
+  it('parse from json with version 5.09', () => {
+    const json = {
+      type: BalanceSheetType.Full,
+      version: BalanceSheetVersion.v5_0_9,
+    };
+    const parsed = BalanceSheetCreateRequestBodySchema.parse(json);
+    expect(parsed.version).toBe(BalanceSheetVersion.v5_0_9);
+  });
+
   it('parse from json with defined stakeholder weights', () => {
     const companyFactsPatchRequestBody =
       BalanceSheetCreateRequestBodySchema.parse({

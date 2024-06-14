@@ -39,55 +39,61 @@ describe('CompanyFactsPatchRequestBodySchema', () => {
   });
 
   describe('parse json where value is missing for field', () => {
-    let json: any;
-    beforeEach(() => {
-      json = { ...CompanyFactsFactory.defaultRequest() };
-    });
+    const json = { ...CompanyFactsFactory.defaultRequest() };
 
     it('financialAssetsAndCashBalance', () => {
-      delete json.financialAssetsAndCashBalance;
       const companyFactsPatchRequestBody =
-        CompanyFactsPatchRequestBodySchema.parse(json);
+        CompanyFactsPatchRequestBodySchema.parse({
+          ...json,
+          financialAssetsAndCashBalance: undefined,
+        });
       expect(
         companyFactsPatchRequestBody.financialAssetsAndCashBalance
       ).toBeUndefined();
     });
 
     it('profit', () => {
-      delete json.profit;
       const companyFactsPatchRequestBody =
-        CompanyFactsPatchRequestBodySchema.parse(json);
+        CompanyFactsPatchRequestBodySchema.parse({
+          ...json,
+          profit: undefined,
+        });
 
       expect(companyFactsPatchRequestBody.profit).toBeUndefined();
     });
 
     it('numberOfEmployees', () => {
-      delete json.numberOfEmployees;
       const companyFactsPatchRequestBody =
-        CompanyFactsPatchRequestBodySchema.parse(json);
+        CompanyFactsPatchRequestBodySchema.parse({
+          ...json,
+          numberOfEmployees: undefined,
+        });
       expect(companyFactsPatchRequestBody.numberOfEmployees).toBeUndefined();
     });
 
     it('hasCanteen', () => {
-      delete json.hasCanteen;
       const companyFactsPatchRequestBody =
-        CompanyFactsPatchRequestBodySchema.parse(json);
+        CompanyFactsPatchRequestBodySchema.parse({
+          ...json,
+          hasCanteen: undefined,
+        });
       expect(companyFactsPatchRequestBody.hasCanteen).toBeUndefined();
     });
 
     it('averageJourneyToWorkForStaffInKm', () => {
-      delete json.averageJourneyToWorkForStaffInKm;
       const companyFactsPatchRequestBody =
-        CompanyFactsPatchRequestBodySchema.parse(json);
+        CompanyFactsPatchRequestBodySchema.parse({
+          ...json,
+          averageJourneyToWorkForStaffInKm: undefined,
+        });
       expect(
         companyFactsPatchRequestBody.averageJourneyToWorkForStaffInKm
       ).toBeUndefined();
     });
 
     it('isB2B', () => {
-      delete json.isB2B;
       const companyFactsPatchRequestBody =
-        CompanyFactsPatchRequestBodySchema.parse(json);
+        CompanyFactsPatchRequestBodySchema.parse({ ...json, isB2B: undefined });
       expect(companyFactsPatchRequestBody.isB2B).toBeUndefined();
     });
   });
@@ -104,10 +110,10 @@ describe('CompanyFactsResponseBodySchema', () => {
   });
 
   it('parse from json with missing hasCanteen', () => {
-    const json: any = CompanyFactsFactory.defaultResponse();
-    delete json.hasCanteen;
-    const result = CompanyFactsResponseBodySchema.parse(json);
-    expect(result).toEqual(json);
+    const { hasCanteen, ...rest } = CompanyFactsFactory.defaultResponse();
+    expect(hasCanteen).toBe(true);
+    const result = CompanyFactsResponseBodySchema.parse(rest);
+    expect(result).toEqual(rest);
   });
 
   it('parse from json with negative profit', () => {
@@ -117,6 +123,7 @@ describe('CompanyFactsResponseBodySchema', () => {
   });
 
   it('parse from json with missing countryCode for main origin of other suppliers', () => {
+    /* eslint-disable @typescript-eslint/no-explicit-any */
     const json: any = CompanyFactsFactory.defaultResponse();
     delete json.mainOriginOfOtherSuppliers.countryCode;
     const result = CompanyFactsResponseBodySchema.parse(json);

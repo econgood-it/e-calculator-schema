@@ -1,15 +1,16 @@
 import { WorkbookResponseBodySchema } from '../src/workbook.dto';
+import { BalanceSheetType, BalanceSheetVersion } from '../src/shared.schemas';
 
 describe('Workbook DTO', () => {
   it('should be created from json', () => {
-    const sections = [
-      { shortName: 'A1', title: 'A1 title' },
-      { shortName: 'D1', title: 'D1 title' },
-      { shortName: 'C2', title: 'C2 title' },
-    ];
-    const json = {
-      sections,
+    const workbook = {
+      version: BalanceSheetVersion.v5_0_9,
+      type: BalanceSheetType.Full,
+      groups: [
+        { shortName: 'A', name: 'A name' },
+        { shortName: 'B', name: 'B name' },
+      ],
     };
-    expect(WorkbookResponseBodySchema.parse(json)).toMatchObject(json);
+    expect(WorkbookResponseBodySchema.parse(workbook)).toMatchObject(workbook);
   });
 });

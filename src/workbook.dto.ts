@@ -1,9 +1,13 @@
 import { z } from 'zod';
+import { BalanceSheetType, BalanceSheetVersion } from './shared.schemas';
 
-export const SectionSchema = z.object({
+const GroupSchema = z.object({
   shortName: z.string(),
-  title: z.string(),
+  name: z.string(),
 });
+
 export const WorkbookResponseBodySchema = z.object({
-  sections: SectionSchema.array(),
+  version: z.nativeEnum(BalanceSheetVersion),
+  type: z.nativeEnum(BalanceSheetType),
+  groups: GroupSchema.array(),
 });

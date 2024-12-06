@@ -36,6 +36,8 @@ export const BalanceSheetResponseBodySchema = z.object({
 
 export const BalanceSheetItemResponseSchema = z.object({
   id: z.number(),
+  version: z.nativeEnum(BalanceSheetVersion),
+  type: z.nativeEnum(BalanceSheetType),
 });
 
 export const BalanceSheetItemsResponseSchema =

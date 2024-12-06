@@ -1,5 +1,6 @@
 import {
   BalanceSheetCreateRequestBodySchema,
+  BalanceSheetItemsResponseSchema,
   BalanceSheetPatchRequestBodySchema,
   BalanceSheetResponseBodySchema,
 } from '../src/balance.sheet.dto';
@@ -90,5 +91,24 @@ describe('BalanceSheetResponseBodySchema', () => {
     const companyFactsPatchRequestBody =
       BalanceSheetResponseBodySchema.parse(json);
     expect(companyFactsPatchRequestBody).toMatchObject(json);
+  });
+});
+
+describe('BalanceSheetItemsResponseSchema', () => {
+  it('is parsed from json', () => {
+    const json = [
+      {
+        id: 7,
+        version: BalanceSheetVersion.v5_0_9,
+        type: BalanceSheetType.Compact,
+      },
+      {
+        id: 8,
+        version: BalanceSheetVersion.v5_1_0,
+        type: BalanceSheetType.Full,
+      },
+    ];
+    const parsed = BalanceSheetItemsResponseSchema.parse(json);
+    expect(parsed).toEqual(json);
   });
 });

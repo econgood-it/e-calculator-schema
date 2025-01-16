@@ -32,6 +32,9 @@ export const isNumberWithDefaultZero = isNumberCustomError.default(0);
 export const isPositiveNumber = isNumberCustomError
   .nonnegative('Number should be positive')
   .default(0);
+export const isPositiveNumberNotZero = isNumberCustomError
+  .gt( 0, 'Number should be positive and greater than zero')
+  .default(0);
 export const isPercentage = z
   .number({
     invalid_type_error: 'Percentage expected',

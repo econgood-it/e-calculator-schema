@@ -6,6 +6,7 @@ export const EN_WORDS = [
   'Number should be between 0 and 10',
   'Number should be between -200 and 0',
   'Must not be blank',
+  'Number should be positive and greater than zero',
 ];
 
 export const EN_ERROR_TRANSLATIONS = {

@@ -3,6 +3,7 @@ import {
   isCountryCode,
   isIndustryCode,
   isNumberWithDefaultZero,
+  isPercentage,
   isPercentageNotZero,
   isPositiveNumber,
   isPositiveNumberNotZero,
@@ -30,6 +31,23 @@ export const SupplyFractionSchema = z
 export const EmployeesFractionSchema = z
   .object({
     countryCode: isCountryCode.optional(),
+    percentage: isPercentage,
+  })
+  .array()
+  .refine(
+    (efs) =>
+      !isSumGreaterThan(
+        efs.map((ef) => ef.percentage),
+        100
+      ),
+    {
+      message: sumOfPercentagesSmallerEqual100Msg,
+    }
+  );
+
+  export const EmployeesFractionSchemaFrontEnd = z
+  .object({
+    countryCode: isCountryCode.optional(),
     percentage: isPercentageNotZero,
   })
   .array()
@@ -45,6 +63,24 @@ export const EmployeesFractionSchema = z
   );
 
 export const IndustrySectorSchema = z
+  .object({
+    industryCode: isIndustryCode.optional(),
+    amountOfTotalTurnover: isPercentage,
+    description: z.string().default(''),
+  })
+  .array()
+  .refine(
+    (is) =>
+      !isSumGreaterThan(
+        is.map((is) => is.amountOfTotalTurnover),
+        100
+      ),
+    {
+      message: sumOfPercentagesSmallerEqual100Msg,
+    }
+  );
+
+export const IndustrySectorSchemaFrontEnd = z
   .object({
     industryCode: isIndustryCode.optional(),
     amountOfTotalTurnover: isPercentageNotZero,

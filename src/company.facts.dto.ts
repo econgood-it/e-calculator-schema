@@ -3,7 +3,6 @@ import {
   isCountryCode,
   isIndustryCode,
   isNumberWithDefaultZero,
-  isPercentage,
   isPercentageNotZero,
   isPositiveNumber,
   isPositiveNumberNotZero,

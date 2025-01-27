@@ -4,6 +4,7 @@ import {
   isIndustryCode,
   isNumberWithDefaultZero,
   isPercentage,
+  isPercentageNotZero,
   isPositiveNumber,
   isPositiveNumberNotZero,
 } from './shared.schemas';
@@ -30,7 +31,7 @@ export const SupplyFractionSchema = z
 export const EmployeesFractionSchema = z
   .object({
     countryCode: isCountryCode.optional(),
-    percentage: isPercentage,
+    percentage: isPercentageNotZero,
   })
   .array()
   .refine(
@@ -47,7 +48,7 @@ export const EmployeesFractionSchema = z
 export const IndustrySectorSchema = z
   .object({
     industryCode: isIndustryCode.optional(),
-    amountOfTotalTurnover: isPercentage,
+    amountOfTotalTurnover: isPercentageNotZero,
     description: z.string().default(''),
   })
   .array()

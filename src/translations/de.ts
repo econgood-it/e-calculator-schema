@@ -4,6 +4,8 @@ export const DE_ERROR_TRANSLATIONS = {
   'Percentage expected': 'Prozentangabe erwartet',
   'Percentage should be between 0 and 100':
     'Prozentangabe sollte zwischen 0 und 100 liegen',
+  'Percentage should be between 1 and 100':
+    'Prozentangabe sollte zwischen 1 und 100 liegen',
   'Number should be between 0 and 10': 'Zahl sollte zwischen 0 und 10 liegen',
   'Number should be between -200 and 0':
     'Zahl sollte zwischen -200 und 0 liegen',

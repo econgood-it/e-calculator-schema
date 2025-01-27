@@ -3,6 +3,7 @@ export const EN_WORDS = [
   'Number should be positive',
   'Percentage expected',
   'Percentage should be between 0 and 100',
+  'Percentage should be between 1 and 100',
   'Number should be between 0 and 10',
   'Number should be between -200 and 0',
   'Must not be blank',

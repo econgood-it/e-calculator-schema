@@ -42,3 +42,10 @@ export const isPercentage = z
   })
   .min(0, 'Percentage should be between 0 and 100')
   .max(100, 'Percentage should be between 0 and 100');
+export const isPercentageNotZero = z
+  .number({
+    invalid_type_error: 'Percentage expected',
+    required_error: 'Percentage expected',
+  })
+  .min(1, 'Percentage should be between 1 and 100')
+  .max(100, 'Percentage should be between 0 and 100');

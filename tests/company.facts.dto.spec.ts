@@ -2,6 +2,8 @@ import {
   CompanyFactsCreateRequestBodySchema,
   CompanyFactsPatchRequestBodySchema,
   CompanyFactsResponseBodySchema,
+  EmployeesFractionSchema,
+  IndustrySectorSchema,
 } from '../src/company.facts.dto';
 import { CompanyFactsFactory } from './factories';
 
@@ -10,6 +12,80 @@ describe('CompanyFactsCreateRequestBodySchema', () => {
     const json = { ...CompanyFactsFactory.defaultRequest(), profit: -2 };
     const companyFacts = CompanyFactsCreateRequestBodySchema.parse(json);
     expect(companyFacts).toEqual(json);
+  });
+});
+
+describe('EmployeesFraction', () => {
+  it('should parse json', () => {
+    const json = [
+      {
+        countryCode: 'DEU',
+        percentage: 10,
+      },
+      {
+        countryCode: 'BEL',
+        percentage: 9,
+      },
+    ];
+    const parsed = EmployeesFractionSchema.parse(json);
+    expect(parsed).toEqual(json);
+  });
+
+  it('should fail parsing json if percentage is zero', () => {
+    const json = [
+      {
+        countryCode: 'DEU',
+        percentage: 0,
+      },
+      {
+        countryCode: 'BEL',
+        percentage: 9,
+      },
+    ];
+    const result = EmployeesFractionSchema.safeParse(json);
+    expect(result.success).toBeFalsy();
+    expect(!result.success && result.error.errors[0].message).toEqual(
+      'Percentage should be between 1 and 100'
+    );
+  });
+});
+
+describe('IndustrySectors', () => {
+  it('should parse json', () => {
+    const json = [
+      {
+        industryCode: 'A',
+        amountOfTotalTurnover: 4,
+        description: 'des',
+      },
+      {
+        industryCode: 'Ca',
+        amountOfTotalTurnover: 20,
+        description: 'des',
+      },
+    ];
+    const parsed = IndustrySectorSchema.parse(json);
+    expect(parsed).toEqual(json);
+  });
+
+  it('should fail parsing json if amount of total turnover is zero', () => {
+    const json = [
+      {
+        industryCode: 'A',
+        amountOfTotalTurnover: 0,
+        description: 'des',
+      },
+      {
+        industryCode: 'Ca',
+        amountOfTotalTurnover: 20,
+        description: 'des',
+      },
+    ];
+    const result = IndustrySectorSchema.safeParse(json);
+    expect(result.success).toBeFalsy();
+    expect(!result.success && result.error.errors[0].message).toEqual(
+      'Percentage should be between 1 and 100'
+    );
   });
 });
 

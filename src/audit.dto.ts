@@ -6,4 +6,5 @@ export const AuditSubmitRequestBodySchema = z.object({
 
 export const AuditSubmitResponseBodySchema = z.object({
   id: z.number(),
+  submittedAt: z.string().datetime(),
 });

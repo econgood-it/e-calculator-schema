@@ -17,6 +17,7 @@ describe('AuditSubmitResponseBodySchema', () => {
   it('parse from json', () => {
     const json = {
       id: 10,
+      submittedAt: new Date().toISOString(),
     };
     const parsed = AuditSubmitResponseBodySchema.parse(json);
     expect(parsed).toEqual(json);

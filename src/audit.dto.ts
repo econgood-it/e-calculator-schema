@@ -1,7 +1,13 @@
 import { z } from 'zod';
 
+export enum CertificationAuthorityNames {
+  AUDIT = 'AUDIT',
+  PEER_GROUP = 'PEER_GROUP',
+}
+
 export const AuditSubmitRequestBodySchema = z.object({
   balanceSheetToBeSubmitted: z.number(),
+  certificationAuthority: z.nativeEnum(CertificationAuthorityNames),
 });
 
 const AuditPartialResponseBodySchema = z.object({

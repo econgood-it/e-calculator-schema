@@ -3,12 +3,14 @@ import {
   AuditSearchResponseBodySchema,
   AuditSubmitRequestBodySchema,
   AuditSubmitResponseBodySchema,
+  CertificationAuthorityNames,
 } from '../src/audit.dto';
 
 describe('AuditSubmitRequestBodySchema', () => {
   it('parse from json', () => {
     const json = {
       balanceSheetToBeSubmitted: 9,
+      certificationAuthority: CertificationAuthorityNames.PEER_GROUP,
     };
     const parsed = AuditSubmitRequestBodySchema.parse(json);
     expect(parsed).toEqual(json);

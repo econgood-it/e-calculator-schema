@@ -13,6 +13,7 @@ export const AuditSubmitRequestBodySchema = z.object({
 const AuditPartialResponseBodySchema = z.object({
   id: z.number(),
   submittedAt: z.string().datetime(),
+  certificationAuthority: z.nativeEnum(CertificationAuthorityNames),
 });
 
 export const AuditSubmitResponseBodySchema = AuditPartialResponseBodySchema;

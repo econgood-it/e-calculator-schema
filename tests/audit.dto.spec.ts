@@ -22,6 +22,7 @@ describe('AuditSubmitResponseBodySchema', () => {
     const json = {
       id: 10,
       submittedAt: new Date().toISOString(),
+      certificationAuthority: CertificationAuthorityNames.PEER_GROUP,
     };
     const parsed = AuditSubmitResponseBodySchema.parse(json);
     expect(parsed).toEqual(json);
@@ -33,6 +34,7 @@ describe('AuditSearchResponseBodySchema', () => {
     const json = {
       id: 10,
       submittedAt: new Date().toISOString(),
+      certificationAuthority: CertificationAuthorityNames.AUDIT,
     };
     const parsed = AuditSearchResponseBodySchema.parse(json);
     expect(parsed).toEqual(json);
@@ -47,6 +49,7 @@ describe('AuditGetResponseBodySchema', () => {
       originalCopyId: 10,
       auditCopyId: 8,
       submittedAt: new Date().toISOString(),
+      certificationAuthority: CertificationAuthorityNames.PEER_GROUP,
     };
     const parsed = AuditFullResponseBodySchema.parse(json);
     expect(parsed).toEqual(json);

@@ -19,11 +19,6 @@ export const OrganizationResponseSchema = OrganizationRequestSchema.extend({
   invitations: z.string().email().array(),
 });
 
-export const OrganizationItemResponseSchema = z.object({
-  id: z.number(),
-  name: isNonEmptyString,
-});
-
 export const OrganizationItemsResponseSchema = z
   .object({ id: z.number(), name: isNonEmptyString })
   .array();

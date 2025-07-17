@@ -26,7 +26,7 @@ export const BalanceSheetPatchRequestBodySchema = z.object({
 });
 
 export const BalanceSheetResponseBodySchema = z.object({
-  id: z.number().optional(),
+  id: z.number(),
   type: z.nativeEnum(BalanceSheetType),
   version: z.nativeEnum(BalanceSheetVersion),
   ratings: RatingResponseBodySchema.array(),

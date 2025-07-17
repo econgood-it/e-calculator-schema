@@ -84,6 +84,7 @@ describe('BalanceSheetResponseBodySchema', () => {
   it('parse from json with defined stakeholder weights', () => {
     const json = {
       ...typeAndVersion,
+      id: 1,
       ratings: [],
       companyFacts: CompanyFactsFactory.defaultResponse(),
       stakeholderWeights,

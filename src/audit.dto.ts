@@ -16,15 +16,8 @@ const AuditPartialResponseBodySchema = z.object({
   certificationAuthority: z.nativeEnum(CertificationAuthorityNames),
 });
 
-const AuditExtendedResponseBodySchema = z.object({
-  id: z.number(),
-  submittedBalanceSheetId: z.number(),
-  submittedAt: z.string().datetime(),
-  certificationAuthority: z.nativeEnum(CertificationAuthorityNames),
-});
-
 export const AuditSubmitResponseBodySchema = AuditPartialResponseBodySchema;
-export const AuditSearchResponseBodySchema = AuditExtendedResponseBodySchema;
+export const AuditSearchResponseBodySchema = AuditPartialResponseBodySchema;
 
 export const AuditFullResponseBodySchema =
   AuditPartialResponseBodySchema.extend({

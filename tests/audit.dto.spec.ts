@@ -33,7 +33,6 @@ describe('AuditSearchResponseBodySchema', () => {
   it('parse from json', () => {
     const json = {
       id: 10,
-      submittedBalanceSheetId: 11,
       submittedAt: new Date().toISOString(),
       certificationAuthority: CertificationAuthorityNames.AUDIT,
     };

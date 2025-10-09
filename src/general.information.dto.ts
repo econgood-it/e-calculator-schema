@@ -17,5 +17,5 @@ const ContactPersonSchema = z.object({
 export const GeneralInformationSchema = z.object({
   company: CompanySchema,
   contactPerson: ContactPersonSchema,
-  period: PeriodSchema,
+  period: PeriodSchema.optional(),
 });

@@ -10,6 +10,7 @@ import {
   RatingResponseBodySchema,
 } from './rating.dto';
 import { StakeholderWeightSchema } from './stakeholder.weight.dto';
+import { GeneralInformationSchema } from './general.information.dto';
 
 export const BalanceSheetCreateRequestBodySchema = z.object({
   type: z.nativeEnum(BalanceSheetType),
@@ -17,12 +18,14 @@ export const BalanceSheetCreateRequestBodySchema = z.object({
   companyFacts: CompanyFactsCreateRequestBodySchema.default({}),
   ratings: RatingRequestBodySchema.array().default([]),
   stakeholderWeights: StakeholderWeightSchema.array().default([]),
+  generalInformation: GeneralInformationSchema,
 });
 
 export const BalanceSheetPatchRequestBodySchema = z.object({
   companyFacts: CompanyFactsPatchRequestBodySchema.optional(),
   ratings: RatingRequestBodySchema.array().default([]),
   stakeholderWeights: StakeholderWeightSchema.array().optional(),
+  generalInformation: GeneralInformationSchema.optional(),
 });
 
 export const BalanceSheetResponseBodySchema = z.object({
@@ -31,6 +34,7 @@ export const BalanceSheetResponseBodySchema = z.object({
   version: z.nativeEnum(BalanceSheetVersion),
   ratings: RatingResponseBodySchema.array(),
   companyFacts: CompanyFactsResponseBodySchema,
+  generalInformation: GeneralInformationSchema,
   stakeholderWeights: StakeholderWeightSchema.array(),
 });
 

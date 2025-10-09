@@ -11,16 +11,31 @@ const stakeholderWeights = [
   { shortName: 'A', weight: 0.5 },
   { shortName: 'C', weight: 1.5 },
 ];
-const typeAndVersion = {
+const generalInformation = {
+  contactPerson: {
+    name: 'John Doe',
+    email: 'john@example.com',
+  },
+  company: {
+    name: 'ECG GmbH',
+  },
+  period: {
+    start: new Date('2021-01-01'),
+    end: new Date('2021-12-31'),
+  },
+};
+const typeAndVersionAndGeneralInfo = {
   type: BalanceSheetType.Full,
   version: BalanceSheetVersion.v5_0_8,
+  generalInformation,
 };
+
 describe('BalanceSheetCreateRequestBodySchema', () => {
   it('parse from json', () => {
     const companyFactsPatchRequestBody =
-      BalanceSheetCreateRequestBodySchema.parse(typeAndVersion);
+      BalanceSheetCreateRequestBodySchema.parse(typeAndVersionAndGeneralInfo);
     expect(companyFactsPatchRequestBody).toMatchObject({
-      ...typeAndVersion,
+      ...typeAndVersionAndGeneralInfo,
       companyFacts: {
         totalPurchaseFromSuppliers: 0,
         totalStaffCosts: 0,
@@ -36,6 +51,7 @@ describe('BalanceSheetCreateRequestBodySchema', () => {
     const json = {
       type: BalanceSheetType.Full,
       version: BalanceSheetVersion.v5_1_0,
+      generalInformation,
     };
     const parsed = BalanceSheetCreateRequestBodySchema.parse(json);
     expect(parsed.version).toBe(BalanceSheetVersion.v5_1_0);
@@ -45,6 +61,7 @@ describe('BalanceSheetCreateRequestBodySchema', () => {
     const json = {
       type: BalanceSheetType.Full,
       version: BalanceSheetVersion.v5_0_9,
+      generalInformation,
     };
     const parsed = BalanceSheetCreateRequestBodySchema.parse(json);
     expect(parsed.version).toBe(BalanceSheetVersion.v5_0_9);
@@ -53,11 +70,11 @@ describe('BalanceSheetCreateRequestBodySchema', () => {
   it('parse from json with defined stakeholder weights', () => {
     const companyFactsPatchRequestBody =
       BalanceSheetCreateRequestBodySchema.parse({
-        ...typeAndVersion,
+        ...typeAndVersionAndGeneralInfo,
         stakeholderWeights,
       });
     expect(companyFactsPatchRequestBody).toMatchObject({
-      ...typeAndVersion,
+      ...typeAndVersionAndGeneralInfo,
       stakeholderWeights,
     });
   });
@@ -83,7 +100,7 @@ describe('BalanceSheetPatchRequestBodySchema', () => {
 describe('BalanceSheetResponseBodySchema', () => {
   it('parse from json with defined stakeholder weights', () => {
     const json = {
-      ...typeAndVersion,
+      ...typeAndVersionAndGeneralInfo,
       id: 1,
       ratings: [],
       companyFacts: CompanyFactsFactory.defaultResponse(),

@@ -20,8 +20,8 @@ const generalInformation = {
     name: 'ECG GmbH',
   },
   period: {
-    start: new Date('2021-01-01'),
-    end: new Date('2021-12-31'),
+    start: new Date('2021-01-01').toISOString(),
+    end: new Date('2021-12-31').toISOString(),
   },
 };
 const typeAndVersionAndGeneralInfo = {

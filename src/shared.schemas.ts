@@ -33,7 +33,7 @@ export const isPositiveNumber = isNumberCustomError
   .nonnegative('Number should be positive')
   .default(0);
 export const isPositiveNumberNotZero = isNumberCustomError
-  .gt( 0, 'Number should be positive and greater than zero')
+  .gt(0, 'Number should be positive and greater than zero')
   .default(0);
 export const isPercentage = z
   .number({
@@ -49,3 +49,7 @@ export const isPercentageNotZero = z
   })
   .min(1, 'Percentage should be between 1 and 100')
   .max(100, 'Percentage should be between 0 and 100');
+const errorMsg = 'Must not be blank';
+export const isNonEmptyString = z
+  .string({ required_error: errorMsg })
+  .min(1, { message: errorMsg });

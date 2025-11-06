@@ -1,8 +1,5 @@
 import { z } from 'zod';
-const errorMsg = 'Must not be blank';
-const isNonEmptyString = z
-  .string({ required_error: errorMsg })
-  .min(1, { message: errorMsg });
+import { isNonEmptyString } from './shared.schemas';
 
 export const OrganizationRequestSchema = z.object({
   name: isNonEmptyString,

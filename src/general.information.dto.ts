@@ -1,7 +1,8 @@
 import { z } from 'zod';
+import { isNonEmptyString } from './shared.schemas';
 
 const CompanySchema = z.object({
-  name: z.string(),
+  name: isNonEmptyString,
 });
 
 const isoDateRegex = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d{1,3})?Z$/;
@@ -14,7 +15,7 @@ const PeriodSchema = z.object({
 
 const ContactPersonSchema = z.object({
   email: z.string().email(),
-  name: z.string(),
+  name: isNonEmptyString,
 });
 
 export const GeneralInformationSchema = z.object({

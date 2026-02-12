@@ -27,6 +27,7 @@ jobs:
           always-auth: true
           cache: 'yarn'
           registry-url: 'https://registry.npmjs.org'
+          scope: '@ecogood'
       - name: Install dependencies
         run: yarn install
       - name: Build

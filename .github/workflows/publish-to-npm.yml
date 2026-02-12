@@ -6,13 +6,19 @@ on:
 env:
   NODE_VERSION: 18.7.0
 
+
+
+
 jobs:
   checks:
+    name: Checks
     uses: ./.github/workflows/check-workflow.yml
     with:
       node-version: ${{ env.NODE_VERSION }}
     secrets: inherit
   publish:
+    name: Publish to NPM
+    needs: checks
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5

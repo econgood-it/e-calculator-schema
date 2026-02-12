@@ -1,6 +1,6 @@
 {
   "name": "@ecogood/e-calculator-schemas",
-  "version": "2.7.20",
+  "version": "2.7.21",
   "description": "A package providing the schemas for the e-calculator application.",
   "main": "dist/e-calculator-schemas",
   "types": "dist/e-calculator-schemas",

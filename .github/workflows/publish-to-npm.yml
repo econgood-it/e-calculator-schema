@@ -23,6 +23,7 @@ jobs:
           node-version: ${{ vars.NODE_VERSION }}
           always-auth: true
           cache: 'yarn'
+          registry-url: 'https://registry.yarnpkg.com'
       - name: Install dependencies
         run: yarn install
       - name: Build

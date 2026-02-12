@@ -29,6 +29,8 @@ jobs:
         run: yarn build
       - name: Publish
         run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ env.NODE_AUTH_TOKEN }}
 
 
 

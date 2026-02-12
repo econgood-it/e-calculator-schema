@@ -3,6 +3,9 @@ on:
   push:
     branches: [ 'main' ]
 
+permissions:
+  id-token: write  # Required for OIDC
+  contents: read
 
 jobs:
   checks:
@@ -12,9 +15,6 @@ jobs:
       node-version: ${{ vars.NODE_VERSION }}
     secrets: inherit
   publish:
-    permissions:
-      contents: read
-      id-token: write
     name: Publish to NPM
     runs-on: ubuntu-latest
     steps:
@@ -28,7 +28,7 @@ jobs:
       - name: Build
         run: yarn build
       - name: Publish
-        run: npm publish --provenance
+        run: npm publish
 
 
 

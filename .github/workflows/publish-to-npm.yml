@@ -3,7 +3,9 @@ on:
   push:
     branches: [ 'main' ]
 
-
+permissions:
+  id-token: write  # Required for OIDC
+  contents: read
 
 jobs:
   checks:
@@ -31,11 +33,10 @@ jobs:
       - name: Install dependencies
         run: yarn install
       - name: Build
-        run: yarn build
+        run: yarn build --if-present
       - name: Publish
-        run: yarn npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_REGISTRY_TOKEN }}
+        run: yarn publish
+
 
 
 

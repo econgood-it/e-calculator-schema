@@ -1,0 +1,11 @@
+name: Perform checks on pull request
+on:
+  pull_request:
+    branches: [ 'main' ]
+
+jobs:
+  checks:
+    uses: ./.github/workflows/check-workflow.yml
+    with:
+      node-version: 18.7.0
+    secrets: inherit

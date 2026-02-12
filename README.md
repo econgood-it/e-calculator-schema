@@ -6,7 +6,7 @@ and the [E-Calculator Frontend](https://git.ecogood.org/services/e-calculator-fr
 ## Install
 
 ```bash
-npm install e-calculator-schemas
+yarn install e-calculator-schemas
 ```
 
 ## Usage
@@ -20,7 +20,3 @@ const regionJson = {
 RegionResponseBodySchema.parse(regionJson);
 ```
 
-## Publish
-```bash
-npm publish
-```

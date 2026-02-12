@@ -1,18 +1,18 @@
 {
   "name": "@ecogood/e-calculator-schemas",
-  "version": "2.7.16",
+  "version": "2.7.17",
   "description": "A package providing the schemas for the e-calculator application.",
   "main": "dist/e-calculator-schemas",
   "types": "dist/e-calculator-schemas",
   "scripts": {
     "build": "tsc",
+    "check-ts": "tsc --noEmit",
     "test": "jest --watch --runInBand",
     "test:ci": "jest --runInBand",
     "format": "prettier --write .",
     "lint": "eslint .",
     "lint-fix": "eslint . --fix",
-    "update:to:latest": "ncu -u && yarn update && yarn install && yarn audit fix",
-    "prepare": "rm -r dist || true && yarn run build && yarn run test:ci && yarn run lint"
+    "update:to:latest": "ncu -u && yarn update && yarn install && yarn audit fix"
   },
   "publishConfig": {
     "access": "public"

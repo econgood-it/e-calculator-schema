@@ -6,6 +6,7 @@ import {
 } from '../src/balance.sheet.dto';
 import { BalanceSheetType, BalanceSheetVersion } from '../src/shared.schemas';
 import { CompanyFactsFactory } from './factories';
+import { Currency } from '../src/general.information.dto';
 
 const stakeholderWeights = [
   { shortName: 'A', weight: 0.5 },
@@ -23,6 +24,7 @@ const generalInformation = {
     start: new Date('2021-01-01').toISOString(),
     end: new Date('2021-12-31').toISOString(),
   },
+  currency: Currency.EUR,
 };
 const typeAndVersionAndGeneralInfo = {
   type: BalanceSheetType.Full,

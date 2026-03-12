@@ -1,4 +1,7 @@
-import { GeneralInformationSchema } from '../src/general.information.dto';
+import {
+  Currency,
+  GeneralInformationSchema,
+} from '../src/general.information.dto';
 
 describe('GeneralInformation', () => {
   it('should parse json', () => {
@@ -14,6 +17,7 @@ describe('GeneralInformation', () => {
         start: new Date('2021-01-01').toISOString(),
         end: new Date('2021-12-31').toISOString(),
       },
+      currency: Currency.USD,
     };
     const parsed = GeneralInformationSchema.parse(json);
     expect(parsed).toEqual(json);

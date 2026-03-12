@@ -18,8 +18,14 @@ const ContactPersonSchema = z.object({
   name: isNonEmptyString,
 });
 
+export enum Currency {
+  EUR = 'EUR',
+  USD = 'USD',
+}
+
 export const GeneralInformationSchema = z.object({
   company: CompanySchema,
   contactPerson: ContactPersonSchema,
   period: PeriodSchema.optional(),
+  currency: z.nativeEnum(Currency),
 });

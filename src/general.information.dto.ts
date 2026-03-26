@@ -21,6 +21,7 @@ const ContactPersonSchema = z.object({
 export enum Currency {
   EUR = 'EUR',
   USD = 'USD',
+  CHF = 'CHF',
 }
 
 export const GeneralInformationSchema = z.object({

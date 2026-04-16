@@ -12,6 +12,7 @@ export enum BalanceSheetVersion {
   v5_0_8 = '5.08',
   v5_0_9 = '5.09',
   v5_1_0 = '5.10',
+  v5_2_0 = '5.20',
 }
 
 const isNumberCustomError = z.number({

@@ -1,4 +1,5 @@
 import { MatrixBodySchema } from '../src/matrix.dto';
+import { BalanceSheetVersion } from '../src/shared.schemas';
 
 describe('MatrixBodySchema', () => {
   const ratingJson = {
